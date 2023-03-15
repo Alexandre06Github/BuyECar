@@ -14,7 +14,7 @@
     <h1>Vente aux enchères</h1>
     <h2>Renseignez votre profil</h2>
 
-    <form action="" method="POST">
+    <form action="connexionDisplay.php" method="POST">
 
         <input type="text" name="nom" placeholder="Nom" />
         <input type="text" name="prenom" placeholder="Prénom" />
