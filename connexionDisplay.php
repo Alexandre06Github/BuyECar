@@ -21,3 +21,14 @@ $monVisiteur = new Visiteur(
 <li>Email :
     <?php echo $monVisiteur->getEmail(); ?>
 </li>
+
+<?php
+$dbh = new PDO("mysql:dbname=BuyECar;port=8889", "root", "root");
+$result = $dbh->prepare('SELECT * FROM Visiteurs WHERE nom=:nom AND prenom=:prenom AND email=:email AND motDePasse=:motDePasse');
+
+$query->bindvalue(['getNom()', $PDO::PARAM_STR]);
+$query->bindvalue(['getPrenom()', $PDO::PARAM_STR]);
+$query->bindvalue(['getEmail()', $PDO::PARAM_STR]);
+$query->bindvalue(['getPassword()', $PDO::PARAM_STR]);
+
+$results = $query->fetchAll(); ?>
