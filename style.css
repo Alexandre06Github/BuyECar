@@ -1,0 +1,9 @@
+.textAlign {
+    text-align: center;
+}
+
+.alignItemsCenter {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
