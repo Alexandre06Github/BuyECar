@@ -1,0 +1,159 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Styles pour l'en-tête */
+header {
+	position: relative;
+}
+
+header img {
+  
+	width: 100%;
+	height: auto;
+}
+
+/* Styles pour la barre de navigation */
+nav {
+	background-color: #042e24;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	height: 60px;
+}
+
+nav .logo {
+	margin-right: auto;
+	padding: 0 20px;
+}
+
+nav .logo img {
+	height: 40px;
+}
+
+
+nav ul {
+	list-style: none;
+	display: flex;
+}
+
+nav ul li {
+	margin-right: 20px;
+}
+
+nav ul li a {
+	color: #fff;
+	text-decoration: none;
+}
+
+nav ul li a:hover {
+	color: #5cd6a7;
+  
+}
+
+.wrapper {
+  position: relative;
+}
+
+nav::before {
+  content: "";
+  position: absolute;
+  bottom: 5;
+  margin-bottom: 64px;
+  left: -100%;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #1ede75, #24e47a);
+
+  animation: slide 2s infinite;
+}
+.car {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 20px;
+  background-color: #333;
+  border-radius: 5px;
+  animation: followLight 2s infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes followLight {
+  0% {
+    transform: translateX(-50%);
+  }
+  50% {
+    transform: translateX(-30%);
+  }
+  100% {
+    transform: translateX(30%);
+  }
+}
+
+.btn {
+  display: inline-block;
+  background-color: #134f2c;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: #40e088;
+  opacity: 0;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.btn:hover:after {
+  width: 500px;
+  height: 500px;
+  opacity: 0.5;
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #134f2c;
+  color: #40e088;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  animation: pulse 2s infinite;
+}
+
+
