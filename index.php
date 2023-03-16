@@ -2,27 +2,12 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>eCar enchère</title>
-
-    <link rel="stylesheet" type="text/css" href="style.css" />
-
-</head>
-
-<body>
-    
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Titre de la page</title>
+	<title>ECar enchère</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<header>
-		<img src="sanstitre2.jpg" alt="Description de l'image">
+		<img src="./images/Banniere.jpg" alt="Description de l'image">
 	</header>
 	<nav>
 		<div class="logo">
