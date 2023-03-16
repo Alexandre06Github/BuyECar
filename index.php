@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="style.css">
     <title>eCar enchère</title>
 
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
 </head>
 
 <body>
-
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,10 +39,28 @@
   <div class="car"></div>
 </div>
 	</nav><br><br>
-    <h1>Vente aux enchères</h1>
-    <h2>Renseignez votre véhicule</h2><br><br>
+<p id="date"></p>
+  <p id="heure"></p>
 
-    <form action="voitureAnnonce.php" method="POST">
+  <script>
+    function afficherHeure() {
+      var date = new Date();
+
+      var optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      var optionsHeure = { hour: 'numeric', minute: 'numeric', second: 'numeric' };
+
+      document.getElementById("date").innerHTML = date.toLocaleDateString('fr-FR', optionsDate);
+      document.getElementById("heure").innerHTML = date.toLocaleTimeString('fr-FR', optionsHeure);
+    }
+    setInterval(afficherHeure, 1000);
+  </script><br><br>
+  
+
+    <h1 class="textAlign">Vente aux enchères</h1>
+    <br>
+    <h2 class="textAlign">Renseignez votre véhicule</h2>
+
+    <form class="textAlign" action="voitureAnnonce.php" method="POST">
 
         <select id="marque" name="marque"> <!-- marque -->
             <option value="" disabled selected>Marques</option>
@@ -90,29 +110,24 @@
         <br>
         <br>
         <br>
+
     </form>
 
+    <h2 class="textAlign">Voitures disponibles</h2>
 
+    <div class="alignItemsCenter">
+        <?php
+        $conn = mysqli_connect("localhost", "root", "root", "BuyECar");         // Établir une connexion à votre base de données
 
-    script.js"></script>
-</body>
+        if (!$conn) {       // Vérifier la connexion
+            die("Échec de la connexion : " . mysqli_connect_error());
+        }
 
-</html>
+        $resultat = mysqli_query($conn, "SELECT * FROM Cars");     // Exécuter la requête SQL pour récupérer les données de la table "Cars"
+        mysqli_close($conn);                // Fermer la connexion à votre base de données
 
-Voitures disponibles
-
-<?php
-$conn = mysqli_connect("localhost", "root", "root", "BuyECar");         // Établir une connexion à votre base de données
-
-if (!$conn) {       // Vérifier la connexion
-    die("Échec de la connexion : " . mysqli_connect_error());
-}
-
-$resultat = mysqli_query($conn, "SELECT * FROM Cars");     // Exécuter la requête SQL pour récupérer les données de la table "Cars"
-mysqli_close($conn);                // Fermer la connexion à votre base de données
-
-echo "<table>";             // Afficher le contenu de ma base de donnée sous forme de tableau HTML
-echo "<tr>
+        echo "<table border='1'>";          // Afficher le contenu de ma base de donnée sous forme de tableau HTML
+        echo "<tr>
         <th>Marque</th>
         <th>Modèle</th>
         <th>Année</th>
@@ -123,8 +138,8 @@ echo "<tr>
         <th>Description</th>
       </tr>";
 
-while ($ligne = mysqli_fetch_assoc($resultat)) {
-    echo "<tr>
+        while ($ligne = mysqli_fetch_assoc($resultat)) {
+            echo "<tr>
                 <td>" . $ligne["marque"] . "</td>
                 <td>" . $ligne["modele"] . "</td>
                 <td>" . $ligne["annee"] . "</td>
@@ -134,7 +149,11 @@ while ($ligne = mysqli_fetch_assoc($resultat)) {
                 <td>" . $ligne["dateFin"] . "</td>
                 <td>" . $ligne["descriptions"] . "</td>
          </tr>";
-}
-echo "</table>";
-?>
+        }
+        echo "</table>";
+        ?>
+    </div>
 
+</body>
+
+</html>
