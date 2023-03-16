@@ -76,21 +76,16 @@
 Voitures disponibles
 
 <?php
-// Établir une connexion à votre base de données
-$conn = mysqli_connect("localhost", "root", "root", "BuyECar");
+$conn = mysqli_connect("localhost", "root", "root", "BuyECar");         // Établir une connexion à votre base de données
 
-// Vérifier la connexion
-if (!$conn) {
+if (!$conn) {       // Vérifier la connexion
     die("Échec de la connexion : " . mysqli_connect_error());
 }
 
-// Exécuter la requête SQL pour récupérer les données de la table "Cars"
-$resultat = mysqli_query($conn, "SELECT * FROM Cars");
-// Fermer la connexion à votre base de données
-mysqli_close($conn);
+$resultat = mysqli_query($conn, "SELECT * FROM Cars");     // Exécuter la requête SQL pour récupérer les données de la table "Cars"
+mysqli_close($conn);                // Fermer la connexion à votre base de données
 
-// Afficher les données sous forme de tableau HTML
-echo "<table>";
+echo "<table>";             // Afficher le contenu de ma base de donnée sous forme de tableau HTML
 echo "<tr>
         <th>Marque</th>
         <th>Modèle</th>
@@ -112,9 +107,8 @@ while ($ligne = mysqli_fetch_assoc($resultat)) {
                 <td>" . $ligne["prixReserve"] . "</td>
                 <td>" . $ligne["dateFin"] . "</td>
                 <td>" . $ligne["descriptions"] . "</td>
-                
          </tr>";
 }
 echo "</table>";
-
 ?>
+
