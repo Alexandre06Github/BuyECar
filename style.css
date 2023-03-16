@@ -53,9 +53,7 @@ nav ul li a:hover {
   
 }
 
-.wrapper {
-  position: relative;
-}
+
 
 nav::before {
   content: "";
@@ -65,20 +63,9 @@ nav::before {
   left: -100%;
   width: 100%;
   height: 4px;
-  background: linear-gradient(to right, #1ede75, #24e47a);
+  background: linear-gradient(to right, #57c3f2, #67cefa);
 
   animation: slide 2s infinite;
-}
-.car {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 20px;
-  background-color: #333;
-  border-radius: 5px;
-  animation: followLight 2s infinite;
 }
 
 @keyframes slide {
@@ -90,17 +77,6 @@ nav::before {
   }
 }
 
-@keyframes followLight {
-  0% {
-    transform: translateX(-50%);
-  }
-  50% {
-    transform: translateX(-30%);
-  }
-  100% {
-    transform: translateX(30%);
-  }
-}
 
 .btn {
   display: inline-block;
