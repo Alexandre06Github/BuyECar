@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -56,9 +56,9 @@
             <option name="couleur" value="Bleu">Bleu</option>
         </select>
 
-        <input name="description" type="text" placeholder="Description"></input>                            <!-- description -->
+        <input name="descriptions" type="text" placeholder="Description"></input>                            <!-- description -->
         <input name="prixReserve" type="number" min="100" placeholder="Prix de réserve"></input>            <!-- prix de réserve -->
-        <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>" max="2023-03-30" required />
+        <input type="date" name="dateFin" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>" max="2023-03-30" required />
 
         <button type="submit">Poster</button>
 
