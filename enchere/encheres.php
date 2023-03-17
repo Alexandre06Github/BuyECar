@@ -36,8 +36,6 @@
 
     ?>
 
-
-
     <?php
     echo "<table>
         <tr>
@@ -60,7 +58,7 @@
             <td>" . $row["prixReserve"] . "€</td>
             <td>" . $row["dateFin"] . "</td>
             <td>" . $row["descriptions"] . "</td>
-            <td>" . $data['MontantFinal'] . "€</td>
+            <td>" . $row['MontantEncheres'] . "€</td>
 
         </tr>
     </table>"
