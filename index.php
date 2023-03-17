@@ -1,47 +1,62 @@
+<?php define('ROOT_PATH', './'); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-	<title>ECar enchère</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eCar enchères</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
 </head>
+
 <body>
-<?php include('navbar.php'); ?>
-	<br><br>
-<p id="date"></p>
+  <?php include ('navbar.php'); ?>
+  <br><br>
+  <p id="date"></p>
   <p id="heure"></p>
 
   <script>
-    function afficherHeure() {
+    function afficherHeure() { // afficher l'heure et la date
       var date = new Date();
 
-      var optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      var optionsHeure = { hour: 'numeric', minute: 'numeric', second: 'numeric' };
+      var optionsDate = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      };
+      var optionsHeure = {
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+      };
 
       document.getElementById("date").innerHTML = date.toLocaleDateString('fr-FR', optionsDate);
       document.getElementById("heure").innerHTML = date.toLocaleTimeString('fr-FR', optionsHeure);
     }
     setInterval(afficherHeure, 1000);
   </script><br><br>
-  
 
-    
 
-    <h2 class="textAlign">Voitures disponibles</h2>
 
-    <div class="alignItemsCenter">
-        <?php
-        $conn = mysqli_connect("localhost", "root", "", "BuyECar");         // Établir une connexion à votre base de données
+  <h2 class="textAlign">Voitures disponibles</h2>
+  <br>
 
-        if (!$conn) {       // Vérifier la connexion
-            die("Échec de la connexion : " . mysqli_connect_error());
-        }
+  <div class="alignItemsCenter">
+    <?php
+    $conn = mysqli_connect("localhost", "root", "root", "BuyECar");         // Établir une connexion à votre base de données
 
-        $resultat = mysqli_query($conn, "SELECT * FROM Cars");     // Exécuter la requête SQL pour récupérer les données de la table "Cars"
-        mysqli_close($conn);                // Fermer la connexion à votre base de données
+    if (!$conn) {       // Vérifier la connexion
+      die("Échec de la connexion : " . mysqli_connect_error());
+    }
 
-        echo "<table border='1'>";          // Afficher le contenu de ma base de donnée sous forme de tableau HTML
-        echo "<tr>
+    $resultat = mysqli_query($conn, "SELECT * FROM Cars");     // Exécuter la requête SQL pour récupérer les données de la table "Cars"
+    mysqli_close($conn);                // Fermer la connexion à votre base de données
+
+    echo "<table border='1'>";          // Afficher le contenu de ma base de donnée sous forme de tableau HTML
+    echo "<tr>
         <th>Marque</th>
         <th>Modèle</th>
         <th>Année</th>
@@ -52,8 +67,8 @@
         <th>Description</th>
       </tr>";
 
-        while ($ligne = mysqli_fetch_assoc($resultat)) {
-            echo "<tr>
+    while ($ligne = mysqli_fetch_assoc($resultat)) {
+      echo "<tr>
                 <td>" . $ligne["marque"] . "</td>
                 <td>" . $ligne["modele"] . "</td>
                 <td>" . $ligne["annee"] . "</td>
