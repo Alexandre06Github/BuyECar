@@ -78,7 +78,7 @@
                 <td>" . $ligne["prixReserve"] . "</td>
                 <td>" . $ligne["dateFin"] . "</td>
                 <td>" . $ligne["descriptions"] . "</td>
-                <td><a href='enchere/encheres.php'>" . $ligne["ID"] . "</a></td>
+                <td><a href='enchere/encheres.php?id=" . $ligne["ID"] . "'>Plus de détails</a></td>
          </tr>";
     }
     echo "</table>";
