@@ -25,15 +25,25 @@
     </h2>
 
 
+
+
+
+    <form action="encheresDisplay.php" method="POST">
+
+        <input type="number" name="mise" placeholder="Ma mise" />
+
+        <button type="submit">Poster</button>
+
+    </form>
+
     <?php
     $dbe = new PDO("mysql:dbname=BuyECar;port=8889", "root", "root");
-    $total = $dbe->prepare('SELECT * FROM Encheres WHERE car_ID =:car_ID');
-    $carID = $row['ID'];
-    $total->bindValue(':car_ID', $carID, PDO::PARAM_INT);
-
+    $total = $dbe->prepare('SELECT * FROM Encheres WHERE MontantFinal =:MontantFinal');
+    $MontantFinal = $_GET['MontantFinal'];
+    $total->bindValue(':MontantFinal', $MontantFinal, PDO::PARAM_STR);
     $total->execute();
     $data = $total->fetch(PDO::FETCH_ASSOC);
-
+    var_dump($MontantFinal);
     ?>
 
     <?php
@@ -58,22 +68,11 @@
             <td>" . $row["prixReserve"] . "€</td>
             <td>" . $row["dateFin"] . "</td>
             <td>" . $row["descriptions"] . "</td>
-            <td>" . $row['MontantEncheres'] . "€</td>
+            <td>" . $data['MontantFinal'] . "€</td>
 
         </tr>
     </table>"
         ?>
-
-
-    <form action="encheresDisplay.php" method="POST">
-
-        <input type="number" name="mise" placeholder="Ma mise" />
-
-        <button type="submit">Poster</button>
-
-    </form>
-
-
 </body>
 
 </html>

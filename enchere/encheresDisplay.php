@@ -21,7 +21,7 @@ $conn = mysqli_connect("localhost", "root", "root", "BuyECar");
 $resultat = mysqli_query($conn, "SELECT * FROM Cars"); // Exécuter la requête SQL pour récupérer les données de la table "Cars"
 mysqli_close($conn); // Fermer la connexion à votre base de données
 
-echo "<table> // Afficher le contenu de ma base de donnée sous forme de tableau HTML
+echo "<table> 
 <tr>
         <th>Marque</th>
         <th>Modèle</th>
