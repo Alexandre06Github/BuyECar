@@ -41,6 +41,7 @@
     
 
     <h2 class="textAlign">Voitures disponibles</h2>
+    <br>
 
     <div class="alignItemsCenter">
         <?php
