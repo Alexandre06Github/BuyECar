@@ -1,3 +1,4 @@
+
 <header>
 		<img src="./images/Banniere.jpg" alt="Description de l'image">
 	</header>
@@ -12,3 +13,4 @@
   <li><a class="btn" href="inscription/inscription.php">Inscription</a></li>
 </ul></div>
 	</nav>
+

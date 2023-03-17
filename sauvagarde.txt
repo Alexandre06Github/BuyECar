@@ -1,0 +1,30 @@
+css
+
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+footer {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	background-color:#042e24;
+	color: #fff;
+	text-align: center;
+	padding: 10px 0;
+}
+
+
+
+html
+
+
+
+    <footer>
+		<div>
+			<p>Informations de contact</p>
+			<p>Liens de navigation</p>
+		</div>
+	</footer>

@@ -136,9 +136,24 @@ nav::before {
 }
 
 
-
 .alignItemsCenter {
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+footer {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	background-color:#042e24;
+	color: #fff;
+	text-align: center;
+	padding: 20px 0;
+  font-size: x-small;
 }
