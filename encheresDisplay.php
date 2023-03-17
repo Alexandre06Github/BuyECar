@@ -18,11 +18,12 @@ $monEnchere = new Encheres(
 
 <?php
 $conn = mysqli_connect("localhost", "root", "root", "BuyECar");
-$resultat = mysqli_query($conn, "SELECT * FROM Cars"); // Exécuter la requête SQL pour récupérer les données de la table "Cars"
+$resultat = mysqli_query($conn, "SELECT * FROM Cars WHERE ID"); // Exécuter la requête SQL pour récupérer les données de la table "Cars"
 mysqli_close($conn); // Fermer la connexion à votre base de données
 
 echo "<table>"; // Afficher le contenu de ma base de donnée sous forme de tableau HTML
 echo "<tr>
+        <th>ID</th>
         <th>Marque</th>
         <th>Modèle</th>
         <th>Année</th>
@@ -35,6 +36,7 @@ echo "<tr>
 
 while ($ligne = mysqli_fetch_assoc($resultat)) {
     echo "<tr>
+                <td>" . $ligne["ID"] . "</td>
                 <td>" . $ligne["marque"] . "</td>
                 <td>" . $ligne["modele"] . "</td>
                 <td>" . $ligne["annee"] . "</td>
