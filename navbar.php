@@ -1,3 +1,4 @@
+
 <header>
 	<img src="<?php echo ROOT_PATH . "/images/Banniere.jpg" ?>" alt="Description de l'image">
 </header>

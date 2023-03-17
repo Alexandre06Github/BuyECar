@@ -78,11 +78,12 @@
                 <td>" . $ligne["dateFin"] . "</td>
                 <td>" . $ligne["descriptions"] . "</td>
          </tr>";
-    }
-    echo "</table>";
-    ?>
-  </div>
-
+        }
+        echo "</table>";
+        ?>
+    </div><br>
+    
+    <?php include('footer.php'); ?>
 </body>
 
 </html>
