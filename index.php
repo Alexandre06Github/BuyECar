@@ -42,7 +42,7 @@
     <br>
     <h2 class="textAlign">Renseignez votre véhicule</h2>
 
-    <form class="textAlign" action="voitureAnnonce.php" method="POST">
+    <form class="textAlign" action="voiture/voitureAnnonce.php" method="POST">
 
         <select id="marque" name="marque"> <!-- marque -->
             <option value="" disabled selected>Marques</option>
