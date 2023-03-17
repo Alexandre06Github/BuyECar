@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . "/connexionClass.php"; ?>
+<?php require_once __DIR__ . "/inscriptionClass.php"; ?>
 
 <?php
 
