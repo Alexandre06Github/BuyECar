@@ -21,8 +21,8 @@ $conn = mysqli_connect("localhost", "root", "root", "BuyECar");
 $resultat = mysqli_query($conn, "SELECT * FROM Cars"); // Exécuter la requête SQL pour récupérer les données de la table "Cars"
 mysqli_close($conn); // Fermer la connexion à votre base de données
 
-echo "<table>"; // Afficher le contenu de ma base de donnée sous forme de tableau HTML
-echo "<tr>
+echo "<table> // Afficher le contenu de ma base de donnée sous forme de tableau HTML
+<tr>
         <th>Marque</th>
         <th>Modèle</th>
         <th>Année</th>
@@ -40,7 +40,7 @@ while ($ligne = mysqli_fetch_assoc($resultat)) {
                 <td>" . $ligne["annee"] . "</td>
                 <td>" . $ligne["chevaux"] . "</td>
                 <td>" . $ligne["couleur"] . "</td>
-                <td>" . $ligne["prixReserve"] . "</td>
+                <td>" . $ligne["prixReserve"] . "€</td>
                 <td>" . $ligne["dateFin"] . "</td>
                 <td>" . $ligne["descriptions"] . "</td>
                 
