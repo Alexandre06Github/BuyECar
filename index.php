@@ -6,21 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<header>
-		<img src="./images/Banniere.jpg" alt="Description de l'image">
-	</header>
-	<nav>
-		<div class="logo">
-			<img src="logo.png" alt="Description du logo">
-		</div>
-		<ul>
-  <li><a class="btn" href="#">Accueil</a></li>
-  <li><a class="btn" href="#">Déposer une annonce</a></li>
-  <li><a class="btn" href="#">Inscription</a></li>
-  <li><a class="btn" href="#">Connexion</a></li>
-</ul>
-<div id="car"></div>
-	</nav><br><br>
+<?php include('navbar.php'); ?>
+	<br><br>
 <p id="date"></p>
   <p id="heure"></p>
 
@@ -99,7 +86,7 @@
 
     <div class="alignItemsCenter">
         <?php
-        $conn = mysqli_connect("localhost", "root", "root", "BuyECar");         // Établir une connexion à votre base de données
+        $conn = mysqli_connect("localhost", "root", "", "BuyECar");         // Établir une connexion à votre base de données
 
         if (!$conn) {       // Vérifier la connexion
             die("Échec de la connexion : " . mysqli_connect_error());
