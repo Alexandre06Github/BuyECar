@@ -19,10 +19,7 @@
   <li><a class="btn" href="#">Inscription</a></li>
   <li><a class="btn" href="#">Connexion</a></li>
 </ul>
-<div class="wrapper">
-  <div class="nav"></div>
-  <div class="car"></div>
-</div>
+<div id="car"></div>
 	</nav><br><br>
 <p id="date"></p>
   <p id="heure"></p>
