@@ -7,8 +7,8 @@
 		</div>
 		<ul>
   <li><a class="btn" href="#">Accueil</a></li>
-  <li><a class="btn" href="#">Déposer une annonce</a></li>
-  <li><a class="btn" href="#">Inscription</a></li>
-  <li><a class="btn" href="#">Connexion</a></li>
+  <li><a class="btn" href="voiture/formulaireAnnonce.php">Déposer une annonce</a></li>
+  <li><a class="btn" href="connexion/connexion.php">Connexion</a></li>
+  <li><a class="btn" href="inscription/inscription.php">Inscription</a></li>
 </ul></div>
 	</nav>
