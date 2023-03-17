@@ -17,6 +17,7 @@
     <?php include('../navbar.php'); ?>
 
     <h1 class="textAlign">Déposer votre annonce</h1>
+    <br>
     <h2 class="textAlign">Renseignez votre véhicule</h2>
 
     <form class="textAlign" action="voitureAnnonce.php" method="POST">
