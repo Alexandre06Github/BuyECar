@@ -12,6 +12,7 @@
 <body>
 
     <h1>Vente aux enchères</h1>
+    <!-- displaying the car id number after "enchere numero" -->
     <h2>Enchère numéro
         <?php
 
@@ -25,9 +26,7 @@
     </h2>
 
 
-
-
-
+    <!-- submitting the enchere -->
     <form action="encheresDisplay.php" method="POST">
 
         <input type="number" name="mise" placeholder="Ma mise" />
@@ -36,15 +35,20 @@
 
     </form>
 
+
+    <!-- retrieving the amount from the table -->
     <?php
     $dbe = new PDO("mysql:dbname=BuyECar;port=8889", "root", "root");
-    $total = $dbe->prepare('SELECT * FROM Encheres WHERE MontantFinal =:MontantFinal');
+    $total = $dbe->prepare('SELECT * FROM Encheres WHERE MontantFinal = :MontantFinal');
     $MontantFinal = $_GET['MontantFinal'];
     $total->bindValue(':MontantFinal', $MontantFinal, PDO::PARAM_STR);
     $total->execute();
     $data = $total->fetch(PDO::FETCH_ASSOC);
     var_dump($MontantFinal);
     ?>
+
+    <!-- adding the mise to the value of the montant final -->
+
 
     <?php
     echo "<table>
