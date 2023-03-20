@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+    <!-- displaying the enchere number which is equal to the car id -->
     <h1>Vente aux enchères</h1>
     <h2>Enchère numéro
         <?php
@@ -38,12 +38,14 @@
 
     <?php
     $dbe = new PDO("mysql:dbname=BuyECar;port=8889", "root", "root");
-    $total = $dbe->prepare('SELECT * FROM Encheres WHERE MontantFinal =:MontantFinal');
-    $MontantFinal = $_GET['MontantFinal'];
-    $total->bindValue(':MontantFinal', $MontantFinal, PDO::PARAM_STR);
+    $total = $dbe->prepare("SELECT Encheres.cars_ID, Encheres.MontantFinal, Cars.marque, Cars.modele, Cars.annee, Cars.chevaux, Cars.couleur, Cars.prixReserve, Cars.dateFin, Cars.descriptions FROM Encheres LEFT JOIN Cars ON Encheres.cars_ID = Cars.ID");
+
+    $MontantFinal = $_GET['id'];
+    $total->bindValue(':ID', $id, PDO::PARAM_STR);
+
+
     $total->execute();
-    $data = $total->fetch(PDO::FETCH_ASSOC);
-    var_dump($MontantFinal);
+    $row = $total->fetch(PDO::FETCH_ASSOC);
     ?>
 
     <?php
@@ -68,7 +70,7 @@
             <td>" . $row["prixReserve"] . "€</td>
             <td>" . $row["dateFin"] . "</td>
             <td>" . $row["descriptions"] . "</td>
-            <td>" . $data['MontantFinal'] . "€</td>
+            <td>" . $row['MontantFinal'] . "€</td>
 
         </tr>
     </table>"
