@@ -16,7 +16,6 @@
 
     <?php include('../navbar.php'); ?>
 
-
     <?php
     session_start();                                    // démarrer une session
 
