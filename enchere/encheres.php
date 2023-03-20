@@ -40,8 +40,11 @@
     $dbe = new PDO("mysql:dbname=BuyECar;port=8889", "root", "root");
     $total = $dbe->prepare("SELECT Encheres.cars_ID, Encheres.MontantFinal, Cars.marque, Cars.modele, Cars.annee, Cars.chevaux, Cars.couleur, Cars.prixReserve, Cars.dateFin, Cars.descriptions FROM Encheres LEFT JOIN Cars ON Encheres.cars_ID = Cars.ID");
 
-    $MontantFinal = $_GET['id'];
-    $total->bindValue(':ID', $id, PDO::PARAM_STR);
+
+    $dbu = new PDO("mysql:dbname=BuyECar;port=8889", "root", "root");
+    $row = $dbu->prepare("SELECT Cars.* FROM Cars WHERE ID = :ID");
+    $id = $_GET['id'];
+    $total->bindValue(':ID', $id, PDO::PARAM_INT);
 
 
     $total->execute();
