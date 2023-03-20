@@ -6,7 +6,11 @@ $monEnchere = new Encheres(
     $_POST["mise"],
 
 );
+
+
+
 ?>
+
 
 <h2>Votre Mise</h2>
 
@@ -14,6 +18,8 @@ $monEnchere = new Encheres(
     <?php echo $monEnchere->getMise();
     ?>€
 </p>
+
+
 
 
 <?php

@@ -27,7 +27,7 @@
 
 
 
-
+    <!-- displaying the enchere details including enchere amount per car -->
     <form action="encheresDisplay.php" method="POST">
 
         <input type="number" name="mise" placeholder="Ma mise" />
