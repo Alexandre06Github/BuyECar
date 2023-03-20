@@ -87,7 +87,7 @@ nav::before {
   color: #fff;
   padding: 10px 20px;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 40%;
   position: relative;
   overflow: hidden;
 }
@@ -106,8 +106,8 @@ nav::before {
 }
 
 .btn:hover:after {
-  width: 500px;
-  height: 500px;
+  width: 150%;
+  height: 500%;
   opacity: 0.5;
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
@@ -116,9 +116,9 @@ nav::before {
   display: inline-block;
   background-color: #134f2c;
   color: #40e088;
-  padding: 10px 20px;
+  padding: 5%, 40%;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 10%;
   position: relative;
   overflow: hidden;
 }
@@ -130,8 +130,8 @@ nav::before {
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 5px;
-  border: 2px solid transparent;
+  border-radius: 50px;
+  border: 20% solid transparent;
   animation: pulse 2s infinite;
 }
 
@@ -157,3 +157,11 @@ footer {
 	padding: 20px 0;
   font-size: x-small;
 }
+
+
+@media screen and (max-width: 600px) {
+  table {
+    width: 100%;
+  }
+}
+

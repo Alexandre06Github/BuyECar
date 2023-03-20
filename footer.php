@@ -1,6 +1,6 @@
 <footer>
 		<div>
-			<p>&copy; Bocal Academy</p>
-			<p>MMXXIII Nice côte d'Azur</p>
+			<p>&copy; Hydria Academiae</p>
+			<p>MMXXIII Nikaia  Gallico Riviera</p>
 		</div>
 	</footer>

@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-<?php include('../navbar.php'); ?>
 
-<h2>Se connecter</h2>
-
-<input type="text" placeholder="email">
-<input type="password" placeholder="mot de passe">
-<button>Se connecter</button>
-=======
 <?php define('ROOT_PATH', '../'); ?>
 
 <!DOCTYPE html>
@@ -29,9 +21,8 @@
 
     <input type="text" placeholder="email">
     <input type="password" placeholder="mot de passe">
-    <button>Se connecter</button>
+    <button><a class="button">Créer</a></button>
 
 </body>
 
 </html>
->>>>>>> 59f4edc8e6729f64bcc5b5ec5222d411ce7aa2e6

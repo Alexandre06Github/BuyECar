@@ -14,39 +14,29 @@
 <body>
   <?php include ('navbar.php'); ?>
   <br><br>
+  <div class="clock">
   <p id="date"></p>
   <p id="heure"></p>
-
+</div>
   <script>
-    function afficherHeure() { // afficher l'heure et la date
-      var date = new Date();
+    function afficherHeure() {
+  const maintenant = new Date();
+  const date = maintenant.toLocaleDateString();
+  const heure = maintenant.toLocaleTimeString();
+  document.getElementById('date').textContent = date;
+  document.getElementById('heure').textContent = heure;
+}
 
-      var optionsDate = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      };
-      var optionsHeure = {
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric'
-      };
-
-      document.getElementById("date").innerHTML = date.toLocaleDateString('fr-FR', optionsDate);
-      document.getElementById("heure").innerHTML = date.toLocaleTimeString('fr-FR', optionsHeure);
-    }
-    setInterval(afficherHeure, 1000);
+afficherHeure();
+setInterval(afficherHeure, 1000);
   </script><br><br>
-
-
 
   <h2 class="textAlign">Voitures disponibles</h2>
   <br>
 
   <div class="alignItemsCenter">
     <?php
-    $conn = mysqli_connect("localhost", "root", "root", "BuyECar");         // Établir une connexion à votre base de données
+    $conn = mysqli_connect("localhost", "root", "", "BuyECar");         // Établir une connexion à votre base de données
 
     if (!$conn) {       // Vérifier la connexion
       die("Échec de la connexion : " . mysqli_connect_error());
