@@ -1,5 +1,23 @@
 <?php require_once __DIR__ . "/inscriptionClass.php"; ?>
 
+<?php define('ROOT_PATH', '../'); ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S'inscrire</title>
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+    <?php include('../navbar.php'); ?>
+
 <?php
 
 $monVisiteur = new Visiteur(
@@ -10,7 +28,7 @@ $monVisiteur = new Visiteur(
 );
 ?>
 
-<h2>Votre Profil</h2>
+<h2>Votre compte vient d'être créé</h2>
 
 <li>Nom :
     <?php echo $monVisiteur->getNom(); ?>
@@ -53,3 +71,7 @@ $stmt->bindValue(':motDePasse', $monVisiteur->getMotDePasse());
 
 // Execute the query
 $stmt->execute(); ?>
+
+</body>
+
+</html>

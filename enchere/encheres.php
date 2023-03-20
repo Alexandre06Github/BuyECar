@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+    <!-- displaying the enchere number which is equal to the car id -->
     <h1>Vente aux enchères</h1>
     <h2>Enchère numéro
         <?php
@@ -25,18 +25,31 @@
     </h2>
 
 
+
+
+    <!-- displaying the enchere details including enchere amount per car -->
+    <form action="encheresDisplay.php" method="POST">
+
+        <input type="number" name="mise" placeholder="Ma mise" />
+
+        <button type="submit">Poster</button>
+
+    </form>
+
     <?php
     $dbe = new PDO("mysql:dbname=BuyECar;port=8889", "root", "root");
-    $total = $dbe->prepare('SELECT * FROM Encheres WHERE car_ID =:car_ID');
-    $carID = $row['ID'];
-    $total->bindValue(':car_ID', $carID, PDO::PARAM_INT);
+    $total = $dbe->prepare("SELECT Encheres.cars_ID, Encheres.MontantFinal, Cars.marque, Cars.modele, Cars.annee, Cars.chevaux, Cars.couleur, Cars.prixReserve, Cars.dateFin, Cars.descriptions FROM Encheres LEFT JOIN Cars ON Encheres.cars_ID = Cars.ID");
+
+
+    $dbu = new PDO("mysql:dbname=BuyECar;port=8889", "root", "root");
+    $row = $dbu->prepare("SELECT Cars.* FROM Cars WHERE ID = :ID");
+    $id = $_GET['id'];
+    $total->bindValue(':ID', $id, PDO::PARAM_INT);
+
 
     $total->execute();
-    $data = $total->fetch(PDO::FETCH_ASSOC);
-
+    $row = $total->fetch(PDO::FETCH_ASSOC);
     ?>
-
-
 
     <?php
     echo "<table>
@@ -60,22 +73,11 @@
             <td>" . $row["prixReserve"] . "€</td>
             <td>" . $row["dateFin"] . "</td>
             <td>" . $row["descriptions"] . "</td>
-            <td>" . $data['MontantFinal'] . "€</td>
+            <td>" . $row['MontantFinal'] . "€</td>
 
         </tr>
     </table>"
         ?>
-
-
-    <form action="encheresDisplay.php" method="POST">
-
-        <input type="number" name="mise" placeholder="Ma mise" />
-
-        <button type="submit">Poster</button>
-
-    </form>
-
-
 </body>
 
 </html>
