@@ -51,7 +51,7 @@
               <td>" . $ligne["modele"] . "</td>
               <td>" . $ligne["annee"] . "</td>
               <td>" . $ligne["prixReserve"] . "€</td>
-              <td>" . $ligne["montantFinal"] . "€</td>
+              <td>" . $ligne["prixEnCours"] . "€</td>
               <td>" . $ligne["dateFin"] . "</td>
               <td><button onclick='window.location.href=\"encheres.php?id=" . $ligne["ID"] . "\"'>Plus de détails</button></td>
              </tr>";

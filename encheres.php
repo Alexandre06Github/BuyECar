@@ -6,27 +6,28 @@ if (!isset($_GET['id'])) {
 }
 $id = $_GET['id'];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $mise = $_POST['mise'];
-    $prixReserve = $_POST['prixReserve'];
-    
-    // Mettre à jour le prix de réserve dans la base de données
-    $dbh = new PDO("mysql:dbname=BuyECar;port=8889", "root", "root");
-    $result = $dbh->prepare('UPDATE Cars SET prixReserve = :prixReserve WHERE ID = :ID');
-    $result->bindValue(':prixReserve', $prixReserve, PDO::PARAM_INT);
-    $result->bindValue(':ID', $id, PDO::PARAM_INT);
-    $result->execute();
-    
-    // Afficher le nouveau prix de réserve
-    $resultat = mysqli_query($conn, "SELECT * FROM Cars WHERE ID = '$id'");
-    $ligne = mysqli_fetch_assoc($resultat);
-    echo "Nouveau prix de réserve : " . $ligne["prixReserve"] . " €";
-}
-
 $conn = mysqli_connect("localhost", "root", "root", "BuyECar");
 $resultat = mysqli_query($conn, "SELECT * FROM Cars WHERE ID = '$id'");
 $ligne = mysqli_fetch_assoc($resultat);
+$prixReserve = $ligne["prixReserve"];
+$prixEnCours = $ligne["prixEnCours"];
 mysqli_close($conn);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $mise = $_POST['prixReserve'];
+    if ($mise > $prixEnCours) {
+        // Mettre à jour le prix en cours dans la base de données
+        $dbh = new PDO("mysql:dbname=BuyECar;port=8889", "root", "root");
+        $result = $dbh->prepare('UPDATE Cars SET prixEnCours = :prixEnCours WHERE ID = :ID');
+        $result->bindValue(':prixEnCours', $mise, PDO::PARAM_INT);
+        $result->bindValue(':ID', $id, PDO::PARAM_INT);
+        $result->execute();
+        
+        // Afficher le nouveau montant en cours
+        $prixEnCours = $mise;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -80,17 +81,14 @@ mysqli_close($conn);
         <p>Date limite d'enchère : <?php echo $ligne["dateFin"]; ?></p>
         <p>Description : <?php echo $ligne["descriptions"]; ?></p>
         <br>
-        <p>Prix de réserve : <?php echo $ligne["prixReserve"] . " €"; ?></p>
+        <p>Prix de réserve : <?php echo $prixReserve . " €"; ?></p>
+        <p>Montant en cours : <?php echo $prixEnCours . " €"; ?></p>
         <br>
 
         <form method="POST">
-            <input type="number" name="prixReserve" placeholder="Ma mise" min=0 />
+            <input type="number" name="prixReserve" placeholder="Ma mise" min="<?php echo $prixEnCours + 1 ?>" />
             <button type="submit">Enchérir</button>
         </form>
-
-
-
-
 
     </div>
 </body>
