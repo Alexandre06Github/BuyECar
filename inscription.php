@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+<div class="front">
     <h1>Création de compte</h1>
     <br>
     <h2>Renseignez votre profil</h2>
@@ -27,7 +27,7 @@
         <button type="submit" class="button-style">Créer</button>
 
     </form>
-
+</div>
 
 </body>
 <?php include('footer.php'); ?>

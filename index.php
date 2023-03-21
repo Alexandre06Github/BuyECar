@@ -39,12 +39,9 @@
         <th>Marque</th>
         <th>Modèle</th>
         <th>Année</th>
-        <th>Puissance (en ch)</th>
-        <th>Couleur</th>
         <th>Prix de réserve</th>
         <th>Date limite d'enchère</th>
-        <th>Description</th>
-        <th>Enchérir</th>
+       
       </tr>";
 
         while ($ligne = mysqli_fetch_assoc($resultat)) {
@@ -52,11 +49,8 @@
               <td>" . $ligne["marque"] . "</td>
               <td>" . $ligne["modele"] . "</td>
               <td>" . $ligne["annee"] . "</td>
-              <td>" . $ligne["chevaux"] . "</td>
-              <td>" . $ligne["couleur"] . "</td>
               <td>" . $ligne["prixReserve"] . "€</td>
               <td>" . $ligne["dateFin"] . "</td>
-              <td>" . $ligne["descriptions"] . "</td>
               <td><button onclick='window.location.href=\"encheres.php?id=" . $ligne["ID"] . "\"'>Plus de détails</button></td>
              </tr>";
         }
