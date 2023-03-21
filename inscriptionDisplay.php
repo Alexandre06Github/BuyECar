@@ -1,7 +1,4 @@
-<?php include('navbar.php'); ?>
-<?php require_once __DIR__ . "inscriptionClass.php"; ?>
-
-<?php define('ROOT_PATH', '../'); ?>
+<?php require_once __DIR__ . "/inscriptionClass.php"; ?>
 
 <!DOCTYPE html>
 <html lang="fr">

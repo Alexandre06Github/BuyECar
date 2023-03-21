@@ -1,5 +1,4 @@
 <?php include('navbar.php'); ?>
-<?php define('ROOT_PATH', './'); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
