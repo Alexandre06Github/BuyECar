@@ -6,6 +6,27 @@ if (!isset($_GET['id'])) {
 }
 $id = $_GET['id'];
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $mise = $_POST['mise'];
+    $prixReserve = $_POST['prixReserve'];
+    
+    // Mettre à jour le prix de réserve dans la base de données
+    $dbh = new PDO("mysql:dbname=BuyECar;port=8889", "root", "root");
+    $result = $dbh->prepare('UPDATE Cars SET prixReserve = :prixReserve WHERE ID = :ID');
+    $result->bindValue(':prixReserve', $prixReserve, PDO::PARAM_INT);
+    $result->bindValue(':ID', $id, PDO::PARAM_INT);
+    $result->execute();
+    
+    // Afficher le nouveau prix de réserve
+    $resultat = mysqli_query($conn, "SELECT * FROM Cars WHERE ID = '$id'");
+    $ligne = mysqli_fetch_assoc($resultat);
+    echo "Nouveau prix de réserve : " . $ligne["prixReserve"] . " €";
+}
+
+$conn = mysqli_connect("localhost", "root", "root", "BuyECar");
+$resultat = mysqli_query($conn, "SELECT * FROM Cars WHERE ID = '$id'");
+$ligne = mysqli_fetch_assoc($resultat);
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -56,14 +77,19 @@ $id = $_GET['id'];
         <p>Puissance : <?php echo $ligne["chevaux"] . "ch";  ?></p>
         <p>Année : <?php echo $ligne["annee"]; ?></p>
         <p>Couleur : <?php echo $ligne["couleur"]; ?></p>
-        <p>Prix de réserve : <?php echo $ligne["prixReserve"] . " €"; ?></p>
         <p>Date limite d'enchère : <?php echo $ligne["dateFin"]; ?></p>
         <p>Description : <?php echo $ligne["descriptions"]; ?></p>
         <br>
-        <input type="number" name="mise" placeholder="Ma mise" min=100 />
-        <button type="submit">Enchérir</button>
+        <p>Prix de réserve : <?php echo $ligne["prixReserve"] . " €"; ?></p>
+        <br>
 
+        <form method="POST">
+            <input type="number" name="prixReserve" placeholder="Ma mise" min=0 />
+            <button type="submit">Enchérir</button>
         </form>
+
+
+
 
 
     </div>
