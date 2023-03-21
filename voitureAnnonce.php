@@ -34,6 +34,12 @@
         <h2>Votre Annonce vient d'être postée !</h2>
 
         <ul>
+            <li>Marque :
+                <?php echo $maVoiture->getMarque(); ?>
+            </li>
+            <li>Modele :
+                <?php echo $maVoiture->getModele(); ?>
+            </li>
             <li>Mise en circulation :
                 <?php echo $maVoiture->getAnnee(); ?>
             </li>
@@ -43,18 +49,13 @@
             <li>Couleur :
                 <?php echo $maVoiture->getCouleur(); ?>
             </li>
-            <li>Votre annonce expire le :
-                <?php echo $maVoiture->getDateFin(); ?>
-            </li>
             <li>Description :
                 <?php echo $maVoiture->getDescriptions(); ?>
             </li>
-            <li>Marque :
-                <?php echo $maVoiture->getMarque(); ?>
+            <li>Votre annonce expire le :
+                <?php echo $maVoiture->getDateFin(); ?>
             </li>
-            <li>Modele :
-                <?php echo $maVoiture->getModele(); ?>
-            </li>
+
             <li>Prix de réserve :
                 <?php echo $maVoiture->getPrixReserve() . '€'; ?>
             </li>

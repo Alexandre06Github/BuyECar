@@ -78,4 +78,3 @@ class Voiture // on défini la class 'Voiture' qui va contenir les informations 
     }
 
 } ?>
-<?php include('footer.php'); ?>
