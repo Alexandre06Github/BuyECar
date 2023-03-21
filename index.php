@@ -1,52 +1,41 @@
-<?php define('ROOT_PATH', './'); ?>
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>eCar enchères</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-
-</head>
+<?php include('navbar.php'); ?>
 
 <body>
-  <?php include('navbar.php'); ?>
-  <br><br>
-  <div class="clock">
-  <p id="date"></p>
-  <p id="heure"></p>
-</div>
-  <script>
-    function afficherHeure() {
-  const maintenant = new Date();
-  const date = maintenant.toLocaleDateString();
-  const heure = maintenant.toLocaleTimeString();
-  document.getElementById('date').textContent = date;
-  document.getElementById('heure').textContent = heure;
-}
+  <div class="front">
+    <div class="clock">
+      <p id="date"></p>
+      <p id="heure"></p>
 
-afficherHeure();
-setInterval(afficherHeure, 1000);
-  </script><br><br>
+      <script>
+        function afficherHeure() {
+          const maintenant = new Date();
+          const date = maintenant.toLocaleDateString();
+          const heure = maintenant.toLocaleTimeString();
+          document.getElementById('date').textContent = date;
+          document.getElementById('heure').textContent = heure;
+        }
 
-  <h2 class="textAlign">Voitures disponibles</h2>
-  <br>
+        afficherHeure();
+        setInterval(afficherHeure, 1000);
+      </script>
+    </div>
+    <div class="dispo">
+      <h2 class="textAlign">Voitures disponibles</h2>
+      <br>
 
-  <div class="alignItemsCenter">
-    <?php
-    $conn = mysqli_connect("localhost", "root", "root", "BuyECar"); // Établir une connexion à votre base de données
-    
-    if (!$conn) { // Vérifier la connexion
-      die("Échec de la connexion : " . mysqli_connect_error());
-    }
+      <div class="alignItemsCenter">
+        <?php
+        $conn = mysqli_connect("localhost", "root", "root", "BuyECar"); // Établir une connexion à votre base de données
+        
+        if (!$conn) { // Vérifier la connexion
+          die("Échec de la connexion : " . mysqli_connect_error());
+        }
 
-    $resultat = mysqli_query($conn, "SELECT * FROM Cars"); // Exécuter la requête SQL pour récupérer les données de la table "Cars"
-    mysqli_close($conn); // Fermer la connexion à votre base de données
-    
-    echo "<table border='1'>"; // Afficher le contenu de ma base de donnée sous forme de tableau HTML
-    echo "<tr>
+        $resultat = mysqli_query($conn, "SELECT * FROM Cars"); // Exécuter la requête SQL pour récupérer les données de la table "Cars"
+        mysqli_close($conn); // Fermer la connexion à votre base de données
+        
+        echo "<table>"; // Afficher le contenu de ma base de donnée sous forme de tableau HTML
+        echo "<tr>
         <th>Marque</th>
         <th>Modèle</th>
         <th>Année</th>
@@ -58,24 +47,26 @@ setInterval(afficherHeure, 1000);
         <th>Enchérir</th>
       </tr>";
 
-    while ($ligne = mysqli_fetch_assoc($resultat)) {
-      echo "<tr>
-                <td>" . $ligne["marque"] . "</td>
-                <td>" . $ligne["modele"] . "</td>
-                <td>" . $ligne["annee"] . "</td>
-                <td>" . $ligne["chevaux"] . "</td>
-                <td>" . $ligne["couleur"] . "</td>
-                <td>" . $ligne["prixReserve"] . "</td>
-                <td>" . $ligne["dateFin"] . "</td>
-                <td>" . $ligne["descriptions"] . "</td>
-                <td><a href='enchere/encheres.php?id=" . $ligne["ID"] . "'>Plus de détails</a></td>
-         </tr>";
-    }
-    echo "</table>";
-    ?>
-  </div><br>
+        while ($ligne = mysqli_fetch_assoc($resultat)) {
+          echo "<tr>
+              <td>" . $ligne["marque"] . "</td>
+              <td>" . $ligne["modele"] . "</td>
+              <td>" . $ligne["annee"] . "</td>
+              <td>" . $ligne["chevaux"] . "</td>
+              <td>" . $ligne["couleur"] . "</td>
+              <td>" . $ligne["prixReserve"] . "€</td>
+              <td>" . $ligne["dateFin"] . "</td>
+              <td>" . $ligne["descriptions"] . "</td>
+              <td><button onclick='window.location.href=\"encheres.php?id=" . $ligne["ID"] . "\"'>Plus de détails</button></td>
+             </tr>";
+        }
 
-  <?php include('footer.php'); ?>
+        echo "</table>";
+        ?>
+      </div>
+    </div>
+  </div>
 </body>
+<?php include('footer.php'); ?>
 
 </html>

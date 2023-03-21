@@ -1,4 +1,4 @@
-<?php define('ROOT_PATH', '../'); ?>
+<?php include('navbar.php'); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -8,13 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S'inscrire</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="Style/style.css">
 
 </head>
 
 <body>
-
-    <?php include('../navbar.php'); ?>
 
     <h1>Création de compte</h1>
     <br>
@@ -32,5 +30,6 @@
 
 
 </body>
+<?php include('footer.php'); ?>
 
 </html>
